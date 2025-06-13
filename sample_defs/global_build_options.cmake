@@ -12,11 +12,14 @@
 # change between compiler vendors or target processor families.
 #
 
+# set(CMAKE_C_OUTPUT_EXTENSION_REPLACE ON)
+
+
 set(ENABLE_COVERAGE $ENV{ENABLE_COVERAGE} CACHE STRING "Enable gcov")
 if (ENABLE_COVERAGE)
   message (STATUS "ENABLE_COVERAGE=true: setting COVERAGE_COMPILE_FLAGS and COVERAGE_LINK_FLAGS")
-  set(COVERAGE_COMPILE_FLAGS -pg --coverage)
-  set(COVERAGE_LINK_FLAGS -pg --coverage)
+  set(COVERAGE_COMPILE_FLAGS --coverage -pg -O0)
+  set(COVERAGE_LINK_FLAGS --coverage -pg -O0)
 else()
   message (STATUS "ENABLE_COVERAGE=false: skipping setting COVERAGE_COMPILE_FLAGS and COVERAGE_LINK_FLAGS")
 endif (ENABLE_COVERAGE)
